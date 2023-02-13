@@ -4,7 +4,7 @@ window.onload = function() //fonction js onload, va permettre de lancer la fenê
 {
     var canvas;
     var ctx;
-    var delay = 100; //le temps de fait en millisecond dont le rectangle bougera 
+    var delay = 100; //le temps de fait en millisecond donc 1 seconde que le rectangle bougera
     var xCoord = 0;
     var yCoord = 0;
 
@@ -18,7 +18,7 @@ window.onload = function() //fonction js onload, va permettre de lancer la fenê
         canvas.style.border = "1px solid";//bordure du canvas
         document.body.appendChild(canvas);// Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
         ctx = canvas.getContext('2d');//attacher le canvas de notre context et on dessinera en 2d
-        refreshCanvas();// appeler la fonction refreshCanvas
+        refreshCanvas();// appeler la fonction canvas
        
     }
 

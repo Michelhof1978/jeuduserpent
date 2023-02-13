@@ -4,11 +4,7 @@ window.onload = function() //fonction js onload, va permettre de lancer la fenê
 {
     var canvas;
     var ctx;
-    var delay = 100; //le temps de fait en millisecond dont le rectangle bougera 
-    var xCoord = 0;
-    var yCoord = 0;
-
-    init(); //on appelle la fonction pour afficher la page
+    var delay = 1000; //le temps de fait en millisecond donc 1 seconde
 
     function init()//la fonction init est un standar pour initialiser les choses
     {
@@ -18,7 +14,7 @@ window.onload = function() //fonction js onload, va permettre de lancer la fenê
         canvas.style.border = "1px solid";//bordure du canvas
         document.body.appendChild(canvas);// Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
         ctx = canvas.getContext('2d');//attacher le canvas de notre context et on dessinera en 2d
-        refreshCanvas();// appeler la fonction refreshCanvas
+        refreshCanvas// appeler la fonction canvas
        
     }
 
@@ -26,13 +22,10 @@ window.onload = function() //fonction js onload, va permettre de lancer la fenê
     function refreshCanvas() 
     {
         xCoord += 2;//création des coordonnées
-        yCoord =+ 2;//création des coordonnées
+        yCoord =+ 2;
         ctx.clearRect(0, 0, canvas.width, canvas.height);//effacer le contenu du canvas
         ctx.fillStyle = "rgba(255,255,255,0.";//choisir la couleur ds lequel je souhaite dessiner 
         ctx.fillRect(xCoord , yCoord , 100, 50).// création d'un petit rectangle, les 2 premiers paramètres sont les coordonnée du rectangle x (horizontale) et y (verticale) du canvas, les 2 dérniers param sont la H et l. Le rectangle crée sera donc déplacé à 3à px du canvas
-        setTimeout(refreshCanvas, delay);//setTimeout = appeler la fonction refreshCanvas à chaque fois que le délais 1 seconde (delay) est passé
     }
-
-
 }
     
