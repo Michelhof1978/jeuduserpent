@@ -1,6 +1,6 @@
 //Création de l'Emplacement du jeu sur la page html
 
-window.onload = function()      //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
+window.onload = function() //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
 {   var canvasWidth = 900;
     var canvasHeight = 600;
     var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
@@ -60,10 +60,9 @@ window.onload = function()      //fonction js onload, va permettre de lancer la 
                ctx.restore();       //Permet de dessiner le contexte du canvas et de le remettre comme avant
             }  
 
-              this.advance = function()     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui 
-                                            //suite... est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du canvas en 100 milisecondes
+              this.advance = function()     //Pour faire avancer le serpent
               {
-                    var nextPosition = this.body[0].slice()//va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
+
               }
             
             

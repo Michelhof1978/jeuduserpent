@@ -60,10 +60,9 @@ window.onload = function()      //fonction js onload, va permettre de lancer la 
                ctx.restore();       //Permet de dessiner le contexte du canvas et de le remettre comme avant
             }  
 
-              this.advance = function()     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui 
-                                            //suite... est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du canvas en 100 milisecondes
+              this.advance = function()     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du cans
               {
-                    var nextPosition = this.body[0].slice()//va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
+
               }
             
             

@@ -1,27 +1,27 @@
 //Création de l'Emplacement du jeu sur la page html
 
-window.onload = function()      //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
+window.onload = function() //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
 {   var canvasWidth = 900;
     var canvasHeight = 600;
-    var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
+    var blockSize = 30;// chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
     var canvas;
     var ctx;
-    var delay = 100;        //le temps est fait en millisecond,le rectangle bougera en fonction du temps à chaque fois que le canvas sera rafraichi
+    var delay = 100; //le temps est fait en millisecond,le rectangle bougera en fonction du temps à chaque fois que le canvas sera rafraichi
     var xCoord = 0;
     var yCoord = 0;
-    var snakee;      // on crée la variable serpent
+    var snakee; // on crée la variable serpent
 
-    init();         //on appelle la fonction pour afficher la page
+    init(); //on appelle la fonction pour afficher la page
 
-    function init()     //la fonction init est un standar pour initialiser les choses
+    function init()//la fonction init est un standar pour initialiser les choses
     {
-        var canvas = document.createElement('canvas');      //Création de l'Emplacement du jeu sur la page, canvas est un élément graphique pour la page html
-        canvas.width = canvasWidth;     //taille du canvas
-        canvas.height = canvasHeight;       //taille du canvas
-        canvas.style.border = "1px solid";      //bordure du canvas
-        document.body.appendChild(canvas);      // Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
-        ctx = canvas.getContext('2d');      //attacher le canvas de notre context et on dessinera en 2d
-        snakee = new Snake([[6,4], [5,4], [4,4]]);      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
+        var canvas = document.createElement('canvas');//Création de l'Emplacement du jeu sur la page, canvas est un élément graphique pour la page html
+        canvas.width = canvasWidth;//taille du canvas
+        canvas.height = canvasHeight;//taille du canvas
+        canvas.style.border = "1px solid";//bordure du canvas
+        document.body.appendChild(canvas);// Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
+        ctx = canvas.getContext('2d');//attacher le canvas de notre context et on dessinera en 2d
+        snakee = new Snake([[6,4], [5,4], [4,4]]);//création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
         //le body est un array
         refreshCanvas();        // appeler la fonction refreshCanvas
        
@@ -60,10 +60,9 @@ window.onload = function()      //fonction js onload, va permettre de lancer la 
                ctx.restore();       //Permet de dessiner le contexte du canvas et de le remettre comme avant
             }  
 
-              this.advance = function()     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui 
-                                            //suite... est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du canvas en 100 milisecondes
+              this.advance = function()     //Pour faire avancer le serpent
               {
-                    var nextPosition = this.body[0].slice()//va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
+
               }
             
             
