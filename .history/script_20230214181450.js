@@ -46,7 +46,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                 snakee.ateApple = true;
                 do {   //Dans le cas où le serpent à manger la pomme, donner une nouvelle position
                     applee.setNewPosition();    //demander à la pomme (applee) de changer de position lorsqu'elle est mangé
-                } while(applee.isOnSnake(snakee));  //Vérifie que la nouvelle position de la pomme est sur le serpent. Si c'est vrai, On retourne à applee.setNewPosition() pour qu'il lui donne une nouvelle position
+                } while(applee.isOnSnake(snakee));  //Vérifie que la nouvelle position de la pomme est sur le serpent/
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
         drawScore();

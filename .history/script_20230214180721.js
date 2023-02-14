@@ -44,9 +44,9 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
             if (snakee.isEatingApple(applee)){ //Si le serpent à manger une pomme, quel pomme je veux vérifier et je vérifie la pomme (applee)
                 score++;
                 snakee.ateApple = true;
-                do {   //Dans le cas où le serpent à manger la pomme, donner une nouvelle position
+                do {
                     applee.setNewPosition();    //demander à la pomme (applee) de changer de position lorsqu'elle est mangé
-                } while(applee.isOnSnake(snakee));  //Vérifie que la nouvelle position de la pomme est sur le serpent. Si c'est vrai, On retourne à applee.setNewPosition() pour qu'il lui donne une nouvelle position
+                } while(applee.isOnSnake(snakee));
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
         drawScore();
@@ -236,7 +236,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                             isOnSnake = true;     
                         }
                     }
-                    return isOnSnake;       //quand nous sommes retourné sur tout le corps de notre serpent, on retourne isOnSnake
+                    return isOnSnake;       //quand nous sommes retourné sur le corps de notre serpent,
                 };
         
             }

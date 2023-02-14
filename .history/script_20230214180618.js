@@ -44,9 +44,9 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
             if (snakee.isEatingApple(applee)){ //Si le serpent à manger une pomme, quel pomme je veux vérifier et je vérifie la pomme (applee)
                 score++;
                 snakee.ateApple = true;
-                do {   //Dans le cas où le serpent à manger la pomme, donner une nouvelle position
+                do {
                     applee.setNewPosition();    //demander à la pomme (applee) de changer de position lorsqu'elle est mangé
-                } while(applee.isOnSnake(snakee));  //Vérifie que la nouvelle position de la pomme est sur le serpent. Si c'est vrai, On retourne à applee.setNewPosition() pour qu'il lui donne une nouvelle position
+                } while(applee.isOnSnake(snakee));
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
         drawScore();
@@ -228,7 +228,6 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                     this.position = [newX,newY];        //Donner sa nouvelle position
                 }; 
                 
-                //Pour savoir si la pomme alétoire est sur notre serpent
                 this.isOnSnake = function(snakeToCheck){   //Comme la pomme est aléatoire, elle pourrait se positionner sur le serpent, nous allons faire en sorte qu'elle évite la position du serpent
                     var isOnSnake = false;      //Non, je ne suis pas sur le serpent
                     for (var i=0 ; i < snakeToCheck.body.length ; i++){ //Va aller sur tout le corps du serpent, à chaque bloc de notre corps du serpent
@@ -236,7 +235,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                             isOnSnake = true;     
                         }
                     }
-                    return isOnSnake;       //quand nous sommes retourné sur tout le corps de notre serpent, on retourne isOnSnake
+                    return isOnSnake;       //quand nous somme
                 };
         
             }
