@@ -154,8 +154,8 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
 
                     this.body.unshift(nextPosition);        //unshift est une fonction   //on récupére donc la nouvelle valeur qui devient [7,4] et nous voulons maintenant l ajouter à notre body, nous avons maintenan 4 éléments [7,4],[6,4], [5,4], [4,4]]
                     if (!this.ateApple)     // ! = not /Si le serpent n'a pas manger de pomme donc = false, on ne souhaite pas aller à this.body.pop()
-                        this.body.pop();   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
-                    else
+                        this.body.pop()   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
+                        else
                     this.ateApple = false;      //on doit éteindre la propriété Apple s'il n'a pas mangé de pomme
                     };
                 //on doit créer un tableau et ds ce tableau il y a X cellules. 

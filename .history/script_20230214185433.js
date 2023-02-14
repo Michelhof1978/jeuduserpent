@@ -1,10 +1,10 @@
 //Création de l'Emplacement du jeu sur la page html
 
 window.onload = function(){      //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
-   var canvasWidth = 900;       //Dimension du canvas largeur
-    var canvasHeight = 500;     //Dimension du canvas hauteur
+   var canvasWidth = 900;
+    var canvasHeight = 600;
     var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
-    var ctx;        //Context
+    var ctx;
     var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, moins le serpent ira vite) à chaque fois que le canvas sera rafraichi pour que le serpent puisse bouger
     var xCoord = 0;
     var yCoord = 0;
@@ -12,12 +12,13 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     var applee;         // on crée la variable pomme
     var widthInBlocks = canvasWidth/blockSize;      // on crée la variable pour délimiter le canvas, 900/30 = 30, en honrizontale, il y aura 30 blocs
     var heightInBlocks = canvasHeight/blockSize;        // on crée la variable pour délimiter le canvas, 600/30 = 30, en verticale, il y aura 20 blocs, on compte les blocs à partir de 0
-    var score;      //qui sera initialisé ds la fonction init
+    var score;      //qui sera initialisé ds la fonction 
     var timeOut;
 
     init();         //on appelle la fonction pour afficher la page
 
     function init(){     //la fonction init est un standard pour initialiser les choses
+    
         var canvas = document.createElement('canvas');      //Création de l'Emplacement du jeu sur la page, canvas est un élément graphique pour la page html
         canvas.width = canvasWidth;     //taille du canvas
         canvas.height = canvasHeight;       //taille du canvas
@@ -29,12 +30,12 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");// Longueur du serpent et ira vers la droite      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
         //le body est un array
         applee = new Apple([10,10]);        //fonction constructeur qui prends un bloc, la pomme sera en position 10 (X) et 10(Y)
-        score = 0; //On initilise le score à 0 pour le début du jeu
+        score = 0;
         refreshCanvas();        // appeler la fonction refreshCanvas
        
     }
 
-    //création du mouvement du serpent, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger par la suite le serpent
+    //création du mouvement du rectangle, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger le rectangle
     function refreshCanvas() {      //Chaque fois que le canvas est rafraichi, il faudra redessiner les éléments(serpent, pomme...)
         snakee.advance();
         if (snakee.checkCollision()){       //Si le faite de le faire avancer, il y a une colision, ça sera perdu
@@ -44,7 +45,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         } else {
             if (snakee.isEatingApple(applee)){ //Si le serpent à manger une pomme, quel pomme je veux vérifier et je vérifie la pomme (applee)
                
-                score++;  //Quand il mange une pomme, on incrémente de 1 le score
+                score++;
 
                 snakee.ateApple = true;     //oui, le serpent vient de manger une pomme
 
@@ -53,25 +54,23 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                 } while(applee.isOnSnake(snakee));  //Vérifie que la nouvelle position de la pomme est sur le serpent. Si c'est vrai, On retourne à applee.setNewPosition() pour qu'il lui donne une nouvelle position
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
-        drawScore();        //On appelle la fonction pour l affichage, bien mettre drawScore(); avant snakee.draw(); et applee.draw(); sinon, le serpend passera sous le score et visuelement, c'est pas beau
+        drawScore();
         snakee.draw();
         applee.draw();
         timeOut = setTimeout(refreshCanvas, delay);       //setTimeout = appeler la fonction refreshCanvas à chaque fois que le délais 1 seconde (delay) est passé
          }
         }
-
- //Ecrire à l'écran Game Over lorsque perdu
-    function gameOver(){       
+    function gameOver(){        //Ecrire à l'écran Game Over lorsque perdu
         ctx.save();     //Enregistrer les paramétres de configuration du contexte du canvas 
         ctx.font = "bold 70px sans-serif";
         ctx.fillStyle = "#000";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.strokeStyle = "white"; //contour texte en blanc
+        ctx.strokeStyle = "white";
         ctx.lineWidth = 5;
         var centreX = canvasWidth / 2;
         var centreY = canvasHeight / 2;
-        ctx.strokeText("Game Over", centreX, centreY - 180);  // -180 =pour qu'il soit situé au dessus du score
+        ctx.strokeText("Game Over", centreX, centreY - 180);
         ctx.fillText("Game Over", centreX, centreY - 180);  //Affichage du Game over à l'écran avec les coordonnées où on souhaite l afficher sur le canvas
         ctx.font = "bold 30px sans-serif";
         ctx.strokeText("Appuyer sur la touche Espace pour rejouer", centreX, centreY - 120);
@@ -84,25 +83,22 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     function restart(){     //Fonction pour commencer le jeu, nous devons à chaque partie du jeu recréer à un endroit précis où le serpent commencera le jeu
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");
         applee = new Apple([10,10]);
-        score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
-        clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
+        score = 0;
+        clearTimeout(timeOut);
         refreshCanvas();        //On relance les boucles
     }
 
-    function drawScore(){       //Afficher le score à l'écran
-        ctx.save();     //Enregistrer les paramétres de configuration du contexte du canvas 
+    function drawScore(){
+        ctx.save();
         ctx.font = "bold 200px sans-serif";
         ctx.fillStyle = "gray";
         ctx.textAlign = "center";
-        ctx.textBaseline = "middle"; //permettra de bien mettre l 'affichage du score au milieu car avec centreX, centreY, il sera pas assez bien situé au milieu
-        
-        var centreX = canvasWidth / 2;      // Largeur/2  Déclaration d une variable pour le centrage du score par rapport à X
-        var centreY = canvasHeight / 2;     // Hauteur/2 Déclaration d une variable pour le centrage du score par rapport à Y
-        ctx.fillText(score.toString(), centreX, centreY);       //Avec fillText, il faudra que le score qui est number soit en string. centreX, centreY sont l'emplacement où sera affiché le score 
-        
-        ctx.restore();      //Remettre les mêmes paramètres comme c'était avant après le game over
+        ctx.textBaseline = "middle";
+        var centreX = canvasWidth / 2;
+        var centreY = canvasHeight / 2;
+        ctx.fillText(score.toString(), centreX, centreY);
+        ctx.restore();
     }
-
 
     function drawBlock(ctx, position) {       // position = position d'un block, on parle de block par facilité mais ce sont plutôt des pixels
    
@@ -110,7 +106,6 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         var y = this.position[1] * blockSize;        //position du bloc * taille du bloc = total pixel
         ctx.fillRect(x, y, blockSize, blockSize);       //remplir le rectangle et prendra la taille du bloc qui  fait 30px
     }// 1 block = 30px
-
 
     //création de l'objet serpent, le corps du serpent sera défini en petit bloques
     function Snake(body, direction) {        //toujours mettre une majuscule au début d'une fonction objet, body = création du corps du serpent
@@ -154,8 +149,8 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
 
                     this.body.unshift(nextPosition);        //unshift est une fonction   //on récupére donc la nouvelle valeur qui devient [7,4] et nous voulons maintenant l ajouter à notre body, nous avons maintenan 4 éléments [7,4],[6,4], [5,4], [4,4]]
                     if (!this.ateApple)     // ! = not /Si le serpent n'a pas manger de pomme donc = false, on ne souhaite pas aller à this.body.pop()
-                        this.body.pop();   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
-                    else
+                        this.body.pop()   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
+                        else
                     this.ateApple = false;      //on doit éteindre la propriété Apple s'il n'a pas mangé de pomme
                     };
                 //on doit créer un tableau et ds ce tableau il y a X cellules. 
@@ -252,7 +247,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                         }
                     }
                     return isOnSnake;       //quand nous sommes retourné sur tout le corps de notre serpent, on retourne isOnSnake
-                }
+                };
         
             }
             
@@ -279,9 +274,8 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                         return;
                 }
                 snakee.setDirection(newDirection); //Dire au serpent d'appeler la nouvelle direction
-            }
+            };
         }
-    
         
         
         

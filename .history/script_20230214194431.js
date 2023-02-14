@@ -85,7 +85,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");
         applee = new Apple([10,10]);
         score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
-        clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
+        clearTimeout(timeOut); // La fonction clearTimeout
         refreshCanvas();        //On relance les boucles
     }
 
@@ -154,8 +154,8 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
 
                     this.body.unshift(nextPosition);        //unshift est une fonction   //on récupére donc la nouvelle valeur qui devient [7,4] et nous voulons maintenant l ajouter à notre body, nous avons maintenan 4 éléments [7,4],[6,4], [5,4], [4,4]]
                     if (!this.ateApple)     // ! = not /Si le serpent n'a pas manger de pomme donc = false, on ne souhaite pas aller à this.body.pop()
-                        this.body.pop();   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
-                    else
+                        this.body.pop()   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
+                        else
                     this.ateApple = false;      //on doit éteindre la propriété Apple s'il n'a pas mangé de pomme
                     };
                 //on doit créer un tableau et ds ce tableau il y a X cellules. 

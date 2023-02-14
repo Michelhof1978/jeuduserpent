@@ -24,6 +24,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         canvas.style.border = "30px solid gray";      //bordure du canvas
         canvas.style.display = "block";
         canvas.style.backgroundColor = "#ddd";
+        c.textBaseline = "middle";
         document.body.appendChild(canvas);      // Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
         ctx = canvas.getContext('2d');      //attacher le canvas de notre context et on dessinera en 2d
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");// Longueur du serpent et ira vers la droite      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []

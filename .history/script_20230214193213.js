@@ -34,7 +34,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
        
     }
 
-    //création du mouvement du serpent, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger par la suite le serpent
+    //création du mouvement du rectangle, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger le rectangle
     function refreshCanvas() {      //Chaque fois que le canvas est rafraichi, il faudra redessiner les éléments(serpent, pomme...)
         snakee.advance();
         if (snakee.checkCollision()){       //Si le faite de le faire avancer, il y a une colision, ça sera perdu
@@ -67,11 +67,11 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         ctx.fillStyle = "#000";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.strokeStyle = "white"; //contour texte en blanc
+        ctx.strokeStyle = "white";
         ctx.lineWidth = 5;
         var centreX = canvasWidth / 2;
         var centreY = canvasHeight / 2;
-        ctx.strokeText("Game Over", centreX, centreY - 180);  // -180 =pour qu'il soit situé au dessus du score
+        ctx.strokeText("Game Over", centreX, centreY - 180);  
         ctx.fillText("Game Over", centreX, centreY - 180);  //Affichage du Game over à l'écran avec les coordonnées où on souhaite l afficher sur le canvas
         ctx.font = "bold 30px sans-serif";
         ctx.strokeText("Appuyer sur la touche Espace pour rejouer", centreX, centreY - 120);
@@ -85,7 +85,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");
         applee = new Apple([10,10]);
         score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
-        clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
+        clearTimeout(timeOut);
         refreshCanvas();        //On relance les boucles
     }
 
@@ -154,8 +154,8 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
 
                     this.body.unshift(nextPosition);        //unshift est une fonction   //on récupére donc la nouvelle valeur qui devient [7,4] et nous voulons maintenant l ajouter à notre body, nous avons maintenan 4 éléments [7,4],[6,4], [5,4], [4,4]]
                     if (!this.ateApple)     // ! = not /Si le serpent n'a pas manger de pomme donc = false, on ne souhaite pas aller à this.body.pop()
-                        this.body.pop();   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
-                    else
+                        this.body.pop()   //On utilisera la fonction POP qui permet de supprimer le dérnier élément du corps de notre serpent
+                        else
                     this.ateApple = false;      //on doit éteindre la propriété Apple s'il n'a pas mangé de pomme
                     };
                 //on doit créer un tableau et ds ce tableau il y a X cellules. 
