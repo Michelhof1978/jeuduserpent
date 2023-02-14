@@ -5,7 +5,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     var canvasHeight = 600;
     var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
     var ctx;
-    var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, moins le serpent ira vite) à chaque fois que le canvas sera rafraichi pour que le serpent puisse bouger
+    var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, plus le serpent ira vite) à chaque fois que le canvas sera rafraichi
     var xCoord = 0;
     var yCoord = 0;
     var snakee;      // on crée la variable serpent
@@ -45,7 +45,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                 score++;
                 snakee.ateApple = true;
                 do {
-                    applee.setNewPosition();    //demander à la pomme (applee) de changer de position lorsqu'elle est mangé
+                    applee.setNewPosition();    //demander à la pomme (applee) 
                 } while(applee.isOnSnake(snakee));
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
@@ -196,7 +196,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                     return wallCollision || snakeCollision;   //Si colision mur ou corps = true donc perdu     
                 };
                 
-                this.isEatingApple = function(appleToEat)
+                this.isEatingApple(appleToEat)
                 {
                     var head = this.body[0];        //il y a uniquement la tête qui mange la pomme ou qu 'il y a colision d un mur. la tête est au premier élément du corps donc [0]
                     if (head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1])       //si le X [0] de la tête est égal au X de la pomme ET pareil pour la position Y

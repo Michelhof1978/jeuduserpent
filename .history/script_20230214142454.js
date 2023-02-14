@@ -5,7 +5,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     var canvasHeight = 600;
     var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
     var ctx;
-    var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, moins le serpent ira vite) à chaque fois que le canvas sera rafraichi pour que le serpent puisse bouger
+    var delay = 100;        //le temps est fait en millisecond,le rectangle bougera en fonction du temps à chaque fois que le canvas sera rafraichi
     var xCoord = 0;
     var yCoord = 0;
     var snakee;      // on crée la variable serpent
@@ -27,7 +27,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         canvas.style.backgroundColor = "#ddd";
         document.body.appendChild(canvas);      // Comme le canvas a été crée, maintenant, il faut l'attacher à la page html (attacher le tag de canvas que l'on a crée)
         ctx = canvas.getContext('2d');      //attacher le canvas de notre context et on dessinera en 2d
-        snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");// Longueur du serpent et ira vers la droite      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
+        snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
         //le body est un array
         applee = new Apple([10,10]);        //fonction constructeur qui prends un bloc, la pomme sera en position 10 (X) et 10(Y)
         score = 0;
@@ -38,14 +38,14 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     //création du mouvement du rectangle, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger le rectangle
     function refreshCanvas() {      //Chaque fois que le canvas est rafraichi, il faudra redessiner les éléments(serpent, pomme...)
         snakee.advance();
-        if (snakee.checkCollision()){       //Si le faite de le faire avancer, il y a une colision, ça sera perdu
+        if (snakee.checkCollision()){
             gameOver();
         } else {
-            if (snakee.isEatingApple(applee)){ //Si le serpent à manger une pomme, quel pomme je veux vérifier et je vérifie la pomme (applee)
+            if (snakee.isEatingApple(applee)){
                 score++;
                 snakee.ateApple = true;
                 do {
-                    applee.setNewPosition();    //demander à la pomme (applee) de changer de position lorsqu'elle est mangé
+                    applee.setNewPosition(); 
                 } while(applee.isOnSnake(snakee));
             }
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);     //effacer le contenu du canvas
@@ -185,24 +185,23 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                     var isNotBetweenHorizontalWalls = snakeX < minX || snakeX > maxX;       //Si la tête à pris le mur de gauche ou bien le mur de droite
                     var isNotBetweenVerticalWalls = snakeY < minY || snakeY > maxY;     //Si la tête à pris le mur du haut ou bien le mur du bas
                     
-                    if (isNotBetweenHorizontalWalls || isNotBetweenVerticalWalls)       //Si l'on rentre ds cette condition donc d'être pris un mur, on rentre ds la condition. Ici, c'est true car on a initiliasé (var wallCollision = false);
+                    if (isNotBetweenHorizontalWalls || isNotBetweenVerticalWalls)       //Si l'on rentre ds cette condition
                         wallCollision = true;
                     
-                    for (var i=0 ; i<rest.length ; i++){        //Indiquer que tant que le reste du corps du serpent
-                        if (snakeX === rest[i][0] && snakeY === rest[i][1])     //Vérifier Si la tête et le corps ont le même X [0] ou le même Y [1] donc se touchent
-                            snakeCollision = true;      //Si condition vrai, il y a colision de serpent. On a assigner ci dessus à   var snakeCollision = false; donc mettre à true la condition
+                    for (var i=0 ; i<rest.length ; i++){
+                        if (snakeX === rest[i][0] && snakeY === rest[i][1])
+                            snakeCollision = true;
                     }
                     
-                    return wallCollision || snakeCollision;   //Si colision mur ou corps = true donc perdu     
+                    return wallCollision || snakeCollision;        
                 };
                 
-                this.isEatingApple = function(appleToEat)
-                {
-                    var head = this.body[0];        //il y a uniquement la tête qui mange la pomme ou qu 'il y a colision d un mur. la tête est au premier élément du corps donc [0]
-                    if (head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1])       //si le X [0] de la tête est égal au X de la pomme ET pareil pour la position Y
-                        return true;        //Si c'est true, il est sur la pomme
+                this.isEatingApple = function(appleToEat){
+                    var head = this.body[0];
+                    if (head[0] === appleToEat.position[0] && head[1] === appleToEat.position[1])
+                        return true;
                     else
-                        return false;       //Sinon, il n'est pas sur la pomme
+                        return false;
                 }
                 
             }
@@ -222,10 +221,10 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                   ctx.restore();
                 };
                 
-                this.setNewPosition = function(){       //Donner une nouvelle position à la pomme lorsque le serpent l'à manger
-                    var newX = Math.round(Math.random()*(widthInBlocks-1));     //Va donner un autre endroit aléatoire (Math.random()) à la pomme lorsque qu'elle sera mangé entre la case 0 et 29. On va multiplier le nombre de blocs qui est ds la largeur -1. Ceci ne suffit pas car le nombre alétoir peut être un chiffre à virgule, nous aurons besoins de Math.round pour arrondir le chiffre
-                    var newY = Math.round(Math.random()*(heightInBlocks-1));    // Idem ci-dessus mais en hauteur
-                    this.position = [newX,newY];        //Donner sa nouvelle position
+                this.setNewPosition = function(){
+                    var newX = Math.round(Math.random()*(widthInBlocks-1));
+                    var newY = Math.round(Math.random()*(heightInBlocks-1));
+                    this.position = [newX,newY];
                 }; 
                 
                 this.isOnSnake = function(snakeToCheck){

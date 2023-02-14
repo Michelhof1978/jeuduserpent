@@ -5,7 +5,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     var canvasHeight = 600;
     var blockSize = 30;     // chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
     var ctx;
-    var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, moins le serpent ira vite) à chaque fois que le canvas sera rafraichi pour que le serpent puisse bouger
+    var delay = 300;        //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps,  le serpent ira vite) à chaque fois que le canvas sera rafraichi
     var xCoord = 0;
     var yCoord = 0;
     var snakee;      // on crée la variable serpent
