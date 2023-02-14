@@ -125,9 +125,9 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                                             //suite... est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du canvas en 100 milisecondes
              
                     var nextPosition = this.body[0].slice();        //va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
-                        switch(this.direction){     //la direction peut aller soit à gauche, droite, bas et haut
+                        switch(this.direction){//la direction peut aller soit à gauche, droite, bas, 
                             case "left":
-                                nextPosition[0] -= 1;   //[0]  = position x Si la position est ajouté de 1, on doit enlever 1 qui est la dernière cellule pour pouvoir avancer
+                                nextPosition[0] -= 1;
                                 break;
                             case "right":
                                 nextPosition[0] += 1;

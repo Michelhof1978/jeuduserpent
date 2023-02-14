@@ -103,14 +103,14 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     }// 1 block = 30px
 
     //création de l'objet serpent, le corps du serpent sera défini en petit bloques
-    function Snake(body, direction) {        //toujours mettre une majuscule au début d'une fonction objet, body = création du corps du serpent
+    function Snake(body, direction)        //toujours mettre une majuscule au début d'une fonction objet, body = création du corps du serpent
     
         this.body = body;       //qui sera égale au body que je fourni au constructeur
         this.direction = direction;
         this.ateApple = false;
         
-        this.draw = function() {      //dessiner le corps du serpent ds notre canvas
-       
+        this.draw = function()      //dessiner le corps du serpent ds notre canvas
+        {
             ctx.save();     //sauvegarder le contexte du canvas comme il étatit avant
             ctx.fillStyle = "xff0000";      //couleur du serpent
             for(var i = 0; i < this.body.length; i++);      // on crée une boucle pour pouvoir déssiner notre serpent et pouvoir se déplacer par la suite ds le body
@@ -121,13 +121,13 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                ctx.restore();       //Permet de dessiner le contexte du canvas et de le remettre comme avant
             };  
 
-              this.advance = function() {     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui 
+              this.advance = function()     //Pour faire avancer le serpent, le but ici pour le faire avancer, c'est d éffacer au fur et à mesure le dernier élément qui 
                                             //suite... est une cellule du tableau et de le faire avancer en rajoutant une céllule tout cela avec une vitessse de rafraichissement du canvas en 100 milisecondes
-             
+              {
                     var nextPosition = this.body[0].slice();        //va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
-                        switch(this.direction){     //la direction peut aller soit à gauche, droite, bas et haut
+                        switch(this.direction){
                             case "left":
-                                nextPosition[0] -= 1;   //[0]  = position x Si la position est ajouté de 1, on doit enlever 1 qui est la dernière cellule pour pouvoir avancer
+                                nextPosition[0] -= 1;
                                 break;
                             case "right":
                                 nextPosition[0] += 1;

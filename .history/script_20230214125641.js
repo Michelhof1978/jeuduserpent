@@ -127,7 +127,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                     var nextPosition = this.body[0].slice();        //va créer un nouvel élément [6,4] en format copie (slice qui est une fonction)
                         switch(this.direction){     //la direction peut aller soit à gauche, droite, bas et haut
                             case "left":
-                                nextPosition[0] -= 1;   //[0]  = position x Si la position est ajouté de 1, on doit enlever 1 qui est la dernière cellule pour pouvoir avancer
+                                nextPosition[0] -= 1;   //[0]  = 
                                 break;
                             case "right":
                                 nextPosition[0] += 1;
