@@ -9,9 +9,9 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
     var xCoord = 0;
     var yCoord = 0;
     var snakee;      // on crée la variable serpent
-    var applee;         // on crée la variable pomme
-    var widthInBlocks = canvasWidth/blockSize;      // on crée la variable pour délimiter le canvas, 900/30 = 30, en honrizontale, il y aura 30 blocs
-    var heightInBlocks = canvasHeight/blockSize;        // on crée la variable pour délimiter le canvas, 600/30 = 30, en verticale, il y aura 20 blocs, on compte les blocs à partir de 0
+    var applee; 
+    var widthInBlocks = canvasWidth/blockSize;
+    var heightInBlocks = canvasHeight/blockSize;
     var score;
     var timeOut;
 
@@ -29,14 +29,14 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
         ctx = canvas.getContext('2d');      //attacher le canvas de notre context et on dessinera en 2d
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");      //création du serpent du début. le serpent est relié au body et sera placé par rapport aux paramètres du body d'où les coordonnées ds le []
         //le body est un array
-        applee = new Apple([10,10]);        //fonction constructeur qui prends un bloc, la pomme sera en position 10 (X) et 10(Y)
+        applee = new Apple([10,10]);
         score = 0;
         refreshCanvas();        // appeler la fonction refreshCanvas
        
     }
 
     //création du mouvement du rectangle, le mouvement sera fera en rafraichissant la fenêtre qui est le canvas ce qui fera bouger le rectangle
-    function refreshCanvas() {      //Chaque fois que le canvas est rafraichi, il faudra redessiner les éléments(serpent, pomme...)
+    function refreshCanvas() {
         snakee.advance();
         if (snakee.checkCollision()){
             gameOver();
@@ -155,33 +155,33 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                 this.setDirection = function(newDirection){     //Passer la nouvelle direction au serpent
                     var allowedDirections;
                     switch(this.direction){
-                        case "left":        //Si mes directions sont à gauche ou à droite, mes directions autorisées seront en haut ou en bas
+                        case "left":        //Si mes direction
                         case "right":
                             allowedDirections=["up","down"];
                             break;
-                        case "down":         //Si mes directions sont en haut ou en bas, mes directions autorisées seront en gauche ou droite
+                        case "down":
                         case "up":
                             allowedDirections=["left","right"];
                             break;  
                        default:
-                            throw("invalid direction");     //throw = fonction pour envoyer un message d erreur
+                            throw("invalid direction");
                     }
-                    if (allowedDirections.indexOf(newDirection) > -1){      //Si l'index (newDirection) est supérieur à -1 alors cela veut dire qu'elle est pérmise. indexOf = parcours le tableau ["up","down"] et ["left","right"] en s'arrétant à l'index -1 
-                        this.direction = newDirection;  //Si direction est permise, on avance
+                    if (allowedDirections.indexOf(newDirection) > -1){
+                        this.direction = newDirection;
                     }
                 };
                 
-                this.checkCollision = function(){       //fonction lorsqu'il y a colision (prendre un mur ou il se touche la queue)
-                    var wallCollision = false;      //colision avec un mur
-                    var snakeCollision = false;     //colision avec la queue
-                    var head = this.body[0];        //ça sera toujours la tête, le premier élément qui rentrera en premier en collision et non le corps
-                    var rest = this.body.slice(1);      //tout le corps du serpent sauf la tête en utilisant la fonction slice, il va copier donc tout le reste ds la variable rest
-                    var snakeX = head[0];       //Détailler le x et y de la tête du serpent, un head est un array de 2 valeurs
-                    var snakeY = head[1];       //Détailler le x et y de la tête du serpent, un head est un array de 2 valeurs
-                    var minX = 0;       //les cellules commencent à 0
-                    var minY = 0;       //les cellules commencent à 0
-                    var maxX = widthInBlocks - 1;       //comme il y a 30 cases horizontales et que l'on commence à 0, il faudra mettre -1. On délimite ici le canvas horizontal qui est X
-                    var maxY = heightInBlocks - 1;      //comme il y a 20 cases verticales et que l'on commence à 0, il faudra mettre -1. On délimite ici le canvas vertical qui est Y
+                this.checkCollision = function(){
+                    var wallCollision = false;
+                    var snakeCollision = false;
+                    var head = this.body[0];
+                    var rest = this.body.slice(1);
+                    var snakeX = head[0];
+                    var snakeY = head[1];
+                    var minX = 0;
+                    var minY = 0;
+                    var maxX = widthInBlocks - 1;
+                    var maxY = heightInBlocks - 1;
                     var isNotBetweenHorizontalWalls = snakeX < minX || snakeX > maxX;
                     var isNotBetweenVerticalWalls = snakeY < minY || snakeY > maxY;
                     
@@ -206,17 +206,17 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                 
             }
             
-            function Apple(position){       //Création de la pomme, 
-                this.position = position; //création de la position de la pomme
+            function Apple(position){
+                this.position = position;
                 
-                this.draw = function(){     //fonction pour dessiner la pomme
+                this.draw = function(){
                   ctx.save();
                   ctx.fillStyle = "#33cc33";
                   ctx.beginPath();
-                  var radius = blockSize/2;     //rayon, taille d'un bloc /2
-                  var x = this.position[0]*blockSize + radius;      //position
+                  var radius = blockSize/2;
+                  var x = this.position[0]*blockSize + radius;
                   var y = this.position[1]*blockSize + radius;
-                  ctx.arc(x, y, radius, 0, Math.PI*2, true);        //rayon du cercle
+                  ctx.arc(x, y, radius, 0, Math.PI*2, true);
                   ctx.fill();
                   ctx.restore();
                 };
@@ -261,7 +261,7 @@ window.onload = function(){      //fonction js onload, va permettre de lancer la
                     default:
                         return;
                 }
-                snakee.setDirection(newDirection); //Dire au serpent d'appeler la nouvelle direction
+                snakee.setDirection(newDirection);
             };
         }
         
