@@ -83,7 +83,7 @@ window.onload = function(){
         score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
         clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
         refreshCanvas();        //On relance les boucles
-    }
+    };
     
     //Afficher le score à l'écran
     function drawScore(){

@@ -242,7 +242,7 @@ window.onload = function(){
     
     //Touche clavier
     document.onkeydown = function handleKeyDown(e){
-        var key = e.key; //Donner le code de la touche appuyée
+        var key = e.keyCode; //Donner le code de la touche appuyée
         var newDirection;//Créer la nouvelle direction en fonction de la touche appuyée
         switch(key){//switch sur la touche appuyée
             case 37://37 correspond à la touche du clavier qui va à gauche

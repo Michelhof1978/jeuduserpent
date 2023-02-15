@@ -77,12 +77,12 @@ window.onload = function(){
     }
     
     //Fonction pour commencer le jeu, nous devons à chaque partie du jeu recréer à un endroit précis où le serpent commencera le jeu
-    function restart(){     //Fonction pour commencer le jeu, nous devons à chaque partie du jeu recréer à un endroit précis où le serpent commencera le jeu
+    function restart(){
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");
         applee = new Apple([10,10]);
-        score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
-        clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
-        refreshCanvas();        //On relance les boucles
+        score = 0;//Quand on relance le jeu, on veut que le score se remette à 0
+        clearTimeout(timeOut);// La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
+        refreshCanvas();//On relance les boucles
     }
     
     //Afficher le score à l'écran
@@ -242,7 +242,7 @@ window.onload = function(){
     
     //Touche clavier
     document.onkeydown = function handleKeyDown(e){
-        var key = e.key; //Donner le code de la touche appuyée
+        var key = e.keyCode; //Donner le code de la touche appuyée
         var newDirection;//Créer la nouvelle direction en fonction de la touche appuyée
         switch(key){//switch sur la touche appuyée
             case 37://37 correspond à la touche du clavier qui va à gauche
@@ -265,5 +265,5 @@ window.onload = function(){
         }
         snakee.setDirection(newDirection);//Dire au serpent d'appeler la nouvelle direction
     };
-    
+}
 

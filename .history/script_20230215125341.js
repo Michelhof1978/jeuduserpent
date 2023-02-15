@@ -2,7 +2,7 @@
 //fonction js onload, va permettre de lancer la fenêtre créee lorque la page s'affiche
 window.onload = function(){
     var canvasWidth = 900;//Dimension du canvas largeur
-    var canvasHeight = 600;//Dimension du canvas hauteur
+    var canvasHeight = 40;//Dimension du canvas hauteur
     var blockSize = 30;// chaque bloque que le serpent va circuler mesurera 30 px, le canvas sera diviser en plusieurs block de 30px
     var ctx;//Context
     var delay = 100; //le temps est fait en millisecond,le serpent bougera en fonction du temps (plus on rajoute du temps, moins le serpent ira vite) à chaque fois que le canvas sera rafraichi pour que le serpent puisse bouger
@@ -77,12 +77,12 @@ window.onload = function(){
     }
     
     //Fonction pour commencer le jeu, nous devons à chaque partie du jeu recréer à un endroit précis où le serpent commencera le jeu
-    function restart(){     //Fonction pour commencer le jeu, nous devons à chaque partie du jeu recréer à un endroit précis où le serpent commencera le jeu
+    function restart(){
         snakee = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]],"right");
         applee = new Apple([10,10]);
-        score = 0;      //Quand on relance le jeu, on veut que le score se remette à 0
-        clearTimeout(timeOut); // La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
-        refreshCanvas();        //On relance les boucles
+        score = 0;//Quand on relance le jeu, on veut que le score se remette à 0
+        clearTimeout(timeOut);// La fonction clearTimeout où on a mis en paramétre la variable timeOut permettra de corriger un bug lorsque l'on apuie sur espace plusieurs fois pour recommencer à jouer. S'il n'y avait pas cette fonction, à chaque fois que l'on appuie sur espace, le serpent serait aller de plus en plus vite, donc ici, nous avons corrigé ce problème
+        refreshCanvas();//On relance les boucles
     }
     
     //Afficher le score à l'écran
@@ -265,5 +265,5 @@ window.onload = function(){
         }
         snakee.setDirection(newDirection);//Dire au serpent d'appeler la nouvelle direction
     };
-    
+
 
